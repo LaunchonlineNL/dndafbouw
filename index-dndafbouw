@@ -1,0 +1,1420 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>D.N.D. Stukadoors & Afbouwbedrijf — Nijmegen</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+/* =============================================
+   CSS VARIABELEN — KLEURENPALET
+   ============================================= */
+:root {
+  --kleur-achtergrond:   #F7F4F0;
+  --kleur-wit:           #FFFFFF;
+  --kleur-zand:          #EDE7DC;
+  --kleur-zand-donker:   #D9CEBB;
+  --kleur-leem:          #C2AE96;
+  --kleur-aarde:         #7A6651;
+  --kleur-donker:        #2E2720;
+  --kleur-tekst:         #3D3229;
+  --kleur-tekst-licht:   #7A6E65;
+  --kleur-accent:        #8B6F4E;
+  --kleur-accent-hover:  #6D5439;
+
+  --font-display: 'Cormorant Garamond', serif;
+  --font-body:    'DM Sans', sans-serif;
+
+  --schaduw-zacht: 0 2px 16px rgba(46,39,32,0.07);
+  --schaduw-medium: 0 4px 32px rgba(46,39,32,0.11);
+  --radius: 4px;
+
+  --max-breedte: 1140px;
+  --padding-sectie: 96px 24px;
+}
+
+/* =============================================
+   RESET & BASIS
+   ============================================= */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background-color: var(--kleur-achtergrond);
+  color: var(--kleur-tekst);
+  font-family: var(--font-body);
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 1.75;
+  -webkit-font-smoothing: antialiased;
+}
+
+img { display: block; max-width: 100%; }
+
+a { color: inherit; text-decoration: none; }
+
+.container {
+  max-width: var(--max-breedte);
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* =============================================
+   NAVIGATIE
+   ============================================= */
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(247,244,240,0.96);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--kleur-zand-donker);
+}
+
+.nav__inner {
+  max-width: var(--max-breedte);
+  margin: 0 auto;
+  padding: 0 24px;
+  height: 68px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.nav__logo {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.nav__logo-naam {
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--kleur-donker);
+  letter-spacing: 0.02em;
+  line-height: 1.1;
+}
+
+.nav__logo-sub {
+  font-size: 10px;
+  font-weight: 400;
+  color: var(--kleur-tekst-licht);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.nav__links {
+  display: flex;
+  align-items: center;
+  gap: 36px;
+  list-style: none;
+}
+
+.nav__links a {
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--kleur-tekst-licht);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  transition: color 0.2s;
+}
+
+.nav__links a:hover { color: var(--kleur-accent); }
+
+.nav__cta {
+  background: var(--kleur-accent);
+  color: var(--kleur-wit) !important;
+  padding: 9px 20px;
+  border-radius: var(--radius);
+  font-weight: 500 !important;
+  font-size: 13px !important;
+  transition: background 0.2s !important;
+}
+.nav__cta:hover { background: var(--kleur-accent-hover) !important; color: var(--kleur-wit) !important; }
+
+/* Hamburger */
+.nav__hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  padding: 4px;
+  background: none;
+  border: none;
+}
+.nav__hamburger span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: var(--kleur-donker);
+  transition: opacity 0.2s;
+}
+
+/* Mobile menu */
+.nav__mobile {
+  display: none;
+  flex-direction: column;
+  background: var(--kleur-achtergrond);
+  border-top: 1px solid var(--kleur-zand-donker);
+  padding: 20px 24px 24px;
+  gap: 4px;
+}
+.nav__mobile.open { display: flex; }
+.nav__mobile a {
+  font-size: 15px;
+  font-weight: 400;
+  color: var(--kleur-tekst);
+  padding: 10px 0;
+  border-bottom: 1px solid var(--kleur-zand);
+  letter-spacing: 0.02em;
+  transition: color 0.2s;
+}
+.nav__mobile a:hover { color: var(--kleur-accent); }
+.nav__mobile .nav__cta-mob {
+  margin-top: 12px;
+  background: var(--kleur-accent);
+  color: var(--kleur-wit) !important;
+  text-align: center;
+  padding: 12px;
+  border-radius: var(--radius);
+  border-bottom: none !important;
+  font-weight: 500;
+}
+.nav__mobile .nav__cta-mob:hover { background: var(--kleur-accent-hover); }
+
+/* =============================================
+   HERO
+   ============================================= */
+.hero {
+  background: var(--kleur-wit);
+  border-bottom: 1px solid var(--kleur-zand);
+  padding: 80px 24px 72px;
+}
+
+.hero__inner {
+  max-width: var(--max-breedte);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: center;
+}
+
+.hero__badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--kleur-zand);
+  color: var(--kleur-aarde);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 6px 14px;
+  border-radius: 2px;
+  margin-bottom: 24px;
+}
+
+.hero__kop {
+  font-family: var(--font-display);
+  font-size: clamp(38px, 5vw, 58px);
+  font-weight: 500;
+  color: var(--kleur-donker);
+  line-height: 1.1;
+  margin-bottom: 20px;
+  letter-spacing: -0.01em;
+}
+
+.hero__kop em {
+  font-style: italic;
+  color: var(--kleur-accent);
+}
+
+.hero__tagline {
+  font-size: 17px;
+  color: var(--kleur-tekst-licht);
+  line-height: 1.7;
+  margin-bottom: 32px;
+  max-width: 420px;
+}
+
+.hero__sterren {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 36px;
+}
+
+.sterren {
+  display: flex;
+  gap: 2px;
+  color: #C9974A;
+  font-size: 16px;
+}
+
+.hero__sterren-tekst {
+  font-size: 13px;
+  color: var(--kleur-tekst-licht);
+}
+
+.hero__acties {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.btn-primair {
+  display: inline-block;
+  background: var(--kleur-accent);
+  color: var(--kleur-wit);
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 500;
+  padding: 14px 28px;
+  border-radius: var(--radius);
+  letter-spacing: 0.02em;
+  transition: background 0.2s;
+  border: none;
+  cursor: pointer;
+}
+.btn-primair:hover { background: var(--kleur-accent-hover); color: var(--kleur-wit); }
+
+.btn-secundair {
+  display: inline-block;
+  background: transparent;
+  color: var(--kleur-accent);
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 500;
+  padding: 14px 28px;
+  border-radius: var(--radius);
+  border: 1.5px solid var(--kleur-leem);
+  transition: border-color 0.2s, color 0.2s;
+  cursor: pointer;
+}
+.btn-secundair:hover { border-color: var(--kleur-accent); color: var(--kleur-accent-hover); }
+
+.hero__afbeelding {
+  position: relative;
+}
+
+.hero__foto-wrapper {
+  aspect-ratio: 4/5;
+  background: var(--kleur-zand);
+  border-radius: 2px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--kleur-zand-donker);
+}
+
+.foto-placeholder {
+  color: var(--kleur-tekst-licht);
+  font-size: 13px;
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  text-align: center;
+  padding: 20px;
+}
+
+.hero__stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1px;
+  background: var(--kleur-zand-donker);
+  border: 1px solid var(--kleur-zand-donker);
+  border-radius: var(--radius);
+  overflow: hidden;
+  margin-top: 16px;
+}
+
+.hero__stat {
+  background: var(--kleur-wit);
+  padding: 16px;
+  text-align: center;
+}
+
+.hero__stat-getal {
+  font-family: var(--font-display);
+  font-size: 26px;
+  font-weight: 600;
+  color: var(--kleur-donker);
+  display: block;
+  line-height: 1.1;
+}
+
+.hero__stat-label {
+  font-size: 11px;
+  color: var(--kleur-tekst-licht);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+/* =============================================
+   OVER ONS
+   ============================================= */
+.over-ons {
+  padding: var(--padding-sectie);
+  background: var(--kleur-achtergrond);
+}
+
+.over-ons__inner {
+  max-width: var(--max-breedte);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 72px;
+  align-items: center;
+}
+
+.sectie-label {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--kleur-leem);
+  margin-bottom: 16px;
+}
+
+.sectie-kop {
+  font-family: var(--font-display);
+  font-size: clamp(30px, 3.5vw, 44px);
+  font-weight: 500;
+  color: var(--kleur-donker);
+  line-height: 1.15;
+  margin-bottom: 24px;
+  letter-spacing: -0.01em;
+}
+
+.sectie-kop em {
+  font-style: italic;
+  color: var(--kleur-accent);
+}
+
+.over-ons__tekst {
+  color: var(--kleur-tekst-licht);
+  font-size: 15.5px;
+  line-height: 1.8;
+  margin-bottom: 16px;
+}
+
+.over-ons__kenmerken {
+  list-style: none;
+  margin-top: 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.over-ons__kenmerken li {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 14px;
+  color: var(--kleur-tekst);
+}
+
+.vinkje {
+  width: 18px;
+  height: 18px;
+  background: var(--kleur-zand);
+  border-radius: 50%;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 3px;
+  font-size: 10px;
+  color: var(--kleur-aarde);
+}
+
+.over-ons__foto-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto auto;
+  gap: 12px;
+}
+
+.over-ons__foto {
+  background: var(--kleur-zand);
+  border: 1px solid var(--kleur-zand-donker);
+  border-radius: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.over-ons__foto:first-child {
+  grid-column: 1 / -1;
+  aspect-ratio: 16/9;
+}
+
+.over-ons__foto:not(:first-child) {
+  aspect-ratio: 1/1;
+}
+
+/* =============================================
+   DIENSTEN
+   ============================================= */
+.diensten {
+  padding: var(--padding-sectie);
+  background: var(--kleur-wit);
+  border-top: 1px solid var(--kleur-zand);
+  border-bottom: 1px solid var(--kleur-zand);
+}
+
+.diensten__header {
+  max-width: var(--max-breedte);
+  margin: 0 auto 52px;
+  text-align: center;
+}
+
+.diensten__grid {
+  max-width: var(--max-breedte);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.dienst-kaart {
+  background: var(--kleur-achtergrond);
+  border: 1px solid var(--kleur-zand-donker);
+  border-radius: var(--radius);
+  padding: 32px 28px;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.dienst-kaart:hover {
+  border-color: var(--kleur-leem);
+  box-shadow: var(--schaduw-zacht);
+}
+
+.dienst-kaart__icoon {
+  width: 40px;
+  height: 40px;
+  background: var(--kleur-zand);
+  border-radius: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+  font-size: 18px;
+}
+
+.dienst-kaart__naam {
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--kleur-donker);
+  margin-bottom: 10px;
+  line-height: 1.2;
+}
+
+.dienst-kaart__beschrijving {
+  font-size: 14px;
+  color: var(--kleur-tekst-licht);
+  line-height: 1.75;
+  margin-bottom: 20px;
+}
+
+.dienst-kaart__prijs {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--kleur-accent);
+  letter-spacing: 0.02em;
+}
+
+/* =============================================
+   REVIEWS
+   ============================================= */
+.reviews {
+  padding: var(--padding-sectie);
+  background: var(--kleur-zand);
+}
+
+.reviews__header {
+  max-width: var(--max-breedte);
+  margin: 0 auto 52px;
+  text-align: center;
+}
+
+.reviews__grid {
+  max-width: var(--max-breedte);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.review-kaart {
+  background: var(--kleur-wit);
+  border-radius: var(--radius);
+  padding: 28px;
+  border: 1px solid var(--kleur-zand-donker);
+}
+
+.review-kaart__sterren {
+  display: flex;
+  gap: 2px;
+  color: #C9974A;
+  font-size: 14px;
+  margin-bottom: 14px;
+}
+
+.review-kaart__tekst {
+  font-size: 14px;
+  color: var(--kleur-tekst);
+  line-height: 1.75;
+  margin-bottom: 18px;
+  font-style: italic;
+}
+
+.review-kaart__naam {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--kleur-aarde);
+  letter-spacing: 0.02em;
+}
+
+/* =============================================
+   GALERIJ
+   ============================================= */
+.galerij {
+  padding: var(--padding-sectie);
+  background: var(--kleur-achtergrond);
+}
+
+.galerij__header {
+  max-width: var(--max-breedte);
+  margin: 0 auto 40px;
+  text-align: center;
+}
+
+.galerij__grid {
+  max-width: var(--max-breedte);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: auto auto;
+  gap: 12px;
+}
+
+.galerij__item {
+  background: var(--kleur-zand);
+  border: 1px solid var(--kleur-zand-donker);
+  border-radius: 2px;
+  aspect-ratio: 1 / 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.galerij__item:first-child {
+  grid-column: span 2;
+  grid-row: span 2;
+  aspect-ratio: auto;
+}
+
+.galerij__item-tekst {
+  font-size: 12px;
+  color: var(--kleur-leem);
+  letter-spacing: 0.04em;
+  text-align: center;
+  padding: 12px;
+}
+
+/* =============================================
+   WERKWIJZE
+   ============================================= */
+.werkwijze {
+  padding: var(--padding-sectie);
+  background: var(--kleur-donker);
+}
+
+.werkwijze__header {
+  max-width: var(--max-breedte);
+  margin: 0 auto 52px;
+  text-align: center;
+}
+
+.werkwijze__header .sectie-label {
+  color: var(--kleur-leem);
+}
+
+.werkwijze__header .sectie-kop {
+  color: var(--kleur-wit);
+}
+
+.werkwijze__stappen {
+  max-width: var(--max-breedte);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 32px;
+  position: relative;
+}
+
+.werkwijze__stap {
+  text-align: center;
+}
+
+.stap__nummer {
+  font-family: var(--font-display);
+  font-size: 52px;
+  font-weight: 400;
+  color: rgba(194,174,150,0.2);
+  line-height: 1;
+  margin-bottom: 12px;
+}
+
+.stap__naam {
+  font-family: var(--font-display);
+  font-size: 18px;
+  font-weight: 500;
+  color: var(--kleur-wit);
+  margin-bottom: 10px;
+}
+
+.stap__tekst {
+  font-size: 13.5px;
+  color: rgba(255,255,255,0.5);
+  line-height: 1.7;
+}
+
+/* =============================================
+   CONTACT
+   ============================================= */
+.contact {
+  padding: var(--padding-sectie);
+  background: var(--kleur-wit);
+  border-top: 1px solid var(--kleur-zand);
+}
+
+.contact__inner {
+  max-width: var(--max-breedte);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 72px;
+}
+
+.contact__info-item {
+  display: flex;
+  gap: 14px;
+  margin-bottom: 24px;
+  align-items: flex-start;
+}
+
+.contact__info-icoon {
+  width: 36px;
+  height: 36px;
+  background: var(--kleur-zand);
+  border-radius: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 15px;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.contact__info-label {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--kleur-leem);
+  margin-bottom: 3px;
+}
+
+.contact__info-waarde {
+  font-size: 15px;
+  color: var(--kleur-tekst);
+  font-weight: 400;
+}
+
+.contact__info-waarde a:hover { color: var(--kleur-accent); }
+
+.contact__openingstijden {
+  margin-top: 28px;
+  background: var(--kleur-zand);
+  border-radius: var(--radius);
+  padding: 20px 22px;
+}
+
+.contact__ot-titel {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--kleur-leem);
+  margin-bottom: 12px;
+}
+
+.contact__ot-rij {
+  display: flex;
+  justify-content: space-between;
+  font-size: 13.5px;
+  color: var(--kleur-tekst);
+  padding: 5px 0;
+  border-bottom: 1px solid var(--kleur-zand-donker);
+}
+.contact__ot-rij:last-child { border-bottom: none; }
+
+/* Formulier */
+.formulier {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.formulier label {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--kleur-tekst-licht);
+  display: block;
+  margin-bottom: 5px;
+}
+
+.formulier input,
+.formulier textarea,
+.formulier select {
+  width: 100%;
+  background: var(--kleur-achtergrond);
+  border: 1px solid var(--kleur-zand-donker);
+  border-radius: var(--radius);
+  padding: 13px 15px;
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 300;
+  color: var(--kleur-tekst);
+  outline: none;
+  transition: border-color 0.2s;
+  min-height: 46px;
+}
+
+.formulier input:focus,
+.formulier textarea:focus,
+.formulier select:focus {
+  border-color: var(--kleur-leem);
+}
+
+.formulier textarea {
+  min-height: 110px;
+  resize: vertical;
+}
+
+.formulier__rij {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+.formulier__veldje { display: flex; flex-direction: column; }
+
+/* =============================================
+   FOOTER
+   ============================================= */
+.footer {
+  background: var(--kleur-donker);
+  padding: 40px 24px;
+  border-top: 1px solid rgba(255,255,255,0.06);
+}
+
+.footer__inner {
+  max-width: var(--max-breedte);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 40px;
+}
+
+.footer__logo-naam {
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-weight: 500;
+  color: var(--kleur-wit);
+  letter-spacing: 0.02em;
+  margin-bottom: 10px;
+}
+
+.footer__logo-sub {
+  font-size: 11px;
+  color: rgba(255,255,255,0.35);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+
+.footer__beschrijving {
+  font-size: 13px;
+  color: rgba(255,255,255,0.4);
+  line-height: 1.7;
+}
+
+.footer__kolom-titel {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--kleur-leem);
+  margin-bottom: 16px;
+}
+
+.footer__kolom-links {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.footer__kolom-links a {
+  font-size: 13px;
+  color: rgba(255,255,255,0.45);
+  transition: color 0.2s;
+}
+
+.footer__kolom-links a:hover { color: rgba(255,255,255,0.85); }
+
+.footer__bottom {
+  max-width: var(--max-breedte);
+  margin: 32px auto 0;
+  padding-top: 24px;
+  border-top: 1px solid rgba(255,255,255,0.08);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.footer__copyright {
+  font-size: 12px;
+  color: rgba(255,255,255,0.28);
+}
+
+.footer__kvk {
+  font-size: 11px;
+  color: rgba(255,255,255,0.2);
+}
+
+/* =============================================
+   RESPONSIVE — TABLET (max 900px)
+   ============================================= */
+@media (max-width: 900px) {
+  :root { --padding-sectie: 72px 20px; }
+
+  .nav__links { display: none; }
+  .nav__hamburger { display: flex; }
+
+  .hero__inner {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  .hero__afbeelding { order: -1; }
+  .hero__foto-wrapper { aspect-ratio: 16/9; }
+  .hero__tagline { max-width: 100%; }
+
+  .over-ons__inner { grid-template-columns: 1fr; gap: 40px; }
+  .over-ons__foto-grid { order: -1; }
+
+  .diensten__grid { grid-template-columns: 1fr 1fr; }
+
+  .reviews__grid { grid-template-columns: 1fr 1fr; }
+
+  .galerij__grid { grid-template-columns: repeat(3, 1fr); }
+  .galerij__item:first-child { grid-column: span 1; grid-row: span 1; aspect-ratio: 1/1; }
+
+  .werkwijze__stappen { grid-template-columns: repeat(2, 1fr); }
+
+  .contact__inner { grid-template-columns: 1fr; gap: 40px; }
+
+  .footer__inner { grid-template-columns: 1fr 1fr; }
+  .footer__inner > :first-child { grid-column: 1 / -1; }
+}
+
+/* =============================================
+   RESPONSIVE — MOBIEL (max 480px)
+   ============================================= */
+@media (max-width: 480px) {
+  :root { --padding-sectie: 56px 16px; }
+
+  .container { padding: 0 16px; }
+
+  .nav__inner { padding: 0 16px; }
+
+  .hero { padding: 48px 16px 56px; }
+
+  .diensten__grid { grid-template-columns: 1fr; }
+
+  .reviews__grid { grid-template-columns: 1fr; }
+
+  .galerij__grid { grid-template-columns: repeat(2, 1fr); }
+  .galerij__item:first-child { grid-column: span 2; aspect-ratio: 16/9; }
+
+  .werkwijze__stappen { grid-template-columns: 1fr 1fr; gap: 20px; }
+
+  .formulier__rij { grid-template-columns: 1fr; }
+
+  .hero__acties { flex-direction: column; }
+  .btn-primair, .btn-secundair { text-align: center; }
+
+  .footer__inner { grid-template-columns: 1fr; }
+  .footer__inner > :first-child { grid-column: auto; }
+
+  .footer__bottom { flex-direction: column; align-items: flex-start; }
+}
+</style>
+</head>
+<body>
+
+<!-- =============================================
+     NAVIGATIE
+     ============================================= -->
+<nav class="nav" id="nav">
+  <div class="nav__inner">
+    <div class="nav__logo">
+      <span class="nav__logo-naam">D.N.D. Afbouw</span>
+      <span class="nav__logo-sub">Stukadoors · Nijmegen</span>
+    </div>
+    <ul class="nav__links">
+      <li><a href="#over-ons">Over ons</a></li>
+      <li><a href="#diensten">Diensten</a></li>
+      <li><a href="#galerij">Galerij</a></li>
+      <li><a href="#reviews">Reviews</a></li>
+      <li><a href="#contact" class="nav__cta">Offerte aanvragen</a></li>
+    </ul>
+    <button class="nav__hamburger" id="hamburger" aria-label="Menu openen">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="nav__mobile" id="mobileMenu">
+    <a href="#over-ons" onclick="sluitMenu()">Over ons</a>
+    <a href="#diensten" onclick="sluitMenu()">Diensten</a>
+    <a href="#galerij" onclick="sluitMenu()">Galerij</a>
+    <a href="#reviews" onclick="sluitMenu()">Reviews</a>
+    <a href="#contact" class="nav__cta-mob" onclick="sluitMenu()">Offerte aanvragen</a>
+  </div>
+</nav>
+
+<!-- =============================================
+     HERO
+     ============================================= -->
+<section class="hero" id="home">
+  <div class="hero__inner">
+    <div class="hero__content">
+      <span class="hero__badge">⬤ &nbsp;Vakman in Nijmegen</span>
+      <h1 class="hero__kop">
+        Strak stucwerk,<br><em>eerlijk vakmanschap</em>
+      </h1>
+      <p class="hero__tagline">
+        Met meer dan 15 jaar ervaring bezorgt D.N.D. Afbouw u prachtig afgewerkte wanden en plafonds — van nieuwbouw tot renovatie, altijd met persoonlijke aandacht.
+      </p>
+      <div class="hero__sterren">
+        <div class="sterren">★★★★★</div>
+        <span class="hero__sterren-tekst">Klanten beoordelen ons met een 5.0</span>
+      </div>
+      <div class="hero__acties">
+        <a href="#contact" class="btn-primair">Gratis offerte aanvragen</a>
+        <a href="#diensten" class="btn-secundair">Bekijk onze diensten</a>
+      </div>
+    </div>
+    <div class="hero__afbeelding">
+      <div class="hero__foto-wrapper">
+        <p class="foto-placeholder">[ Foto van het werk of eigenaar ]</p>
+      </div>
+      <div class="hero__stats">
+        <div class="hero__stat">
+          <span class="hero__stat-getal">15+</span>
+          <span class="hero__stat-label">Jaar ervaring</span>
+        </div>
+        <div class="hero__stat">
+          <span class="hero__stat-getal">100%</span>
+          <span class="hero__stat-label">Tevredenheid</span>
+        </div>
+        <div class="hero__stat">
+          <span class="hero__stat-getal">1-op-1</span>
+          <span class="hero__stat-label">Direct contact</span>
+        </div>
+        <div class="hero__stat">
+          <span class="hero__stat-getal">Nijmegen</span>
+          <span class="hero__stat-label">&amp; omgeving</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =============================================
+     OVER ONS
+     ============================================= -->
+<section class="over-ons" id="over-ons">
+  <div class="over-ons__inner">
+    <div>
+      <span class="sectie-label">Over ons</span>
+      <h2 class="sectie-kop">Vakmanschap dat<br><em>voor zichzelf spreekt</em></h2>
+      <p class="over-ons__tekst">
+        Mijn naam is Ismet Demir. Al meer dan 15 jaar ben ik werkzaam als stukadoor en doe ik dit met veel passie. Bij D.N.D. Afbouw werkt u altijd direct met de vakman zelf — geen tussenpersonen, geen verrassingen achteraf.
+      </p>
+      <p class="over-ons__tekst">
+        Omdat ik solo werk, heb ik korte lijnen met u als opdrachtgever. Dat betekent snelle communicatie, een eerlijke prijs en oog voor detail op elke klus — groot of klein. Vanuit Nijmegen ben ik actief in de hele regio.
+      </p>
+      <ul class="over-ons__kenmerken">
+        <li><span class="vinkje">✓</span> Persoonlijk contact, altijd direct met de vakman</li>
+        <li><span class="vinkje">✓</span> Eerlijke prijzen zonder verborgen kosten</li>
+        <li><span class="vinkje">✓</span> Nette oplevering en opgeruimde werkplek</li>
+        <li><span class="vinkje">✓</span> Actief in Nijmegen en omstreken</li>
+        <li><span class="vinkje">✓</span> KvK geregistreerd, BTW-plichtig bedrijf</li>
+      </ul>
+    </div>
+    <div class="over-ons__foto-grid">
+      <div class="over-ons__foto">
+        <p class="foto-placeholder">[ Foto van Ismet aan het werk ]</p>
+      </div>
+      <div class="over-ons__foto">
+        <p class="foto-placeholder">[ Foto 2 ]</p>
+      </div>
+      <div class="over-ons__foto">
+        <p class="foto-placeholder">[ Foto 3 ]</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =============================================
+     DIENSTEN
+     ============================================= -->
+<section class="diensten" id="diensten">
+  <div class="diensten__header">
+    <span class="sectie-label">Diensten</span>
+    <h2 class="sectie-kop">Wat kan D.N.D. Afbouw<br><em>voor u doen?</em></h2>
+  </div>
+  <div class="diensten__grid">
+
+    <div class="dienst-kaart">
+      <div class="dienst-kaart__icoon">🏗️</div>
+      <h3 class="dienst-kaart__naam">Nieuwbouw stucwerk</h3>
+      <p class="dienst-kaart__beschrijving">
+        Uw nieuwe woning voorzien van een egale, duurzame afwerking. Wij werken met hoogwaardige spack (spachtelputz) als voordelige en robuuste basisoptie.
+      </p>
+      <span class="dienst-kaart__prijs">Vraag vrijblijvend een offerte aan →</span>
+    </div>
+
+    <div class="dienst-kaart">
+      <div class="dienst-kaart__icoon">🔨</div>
+      <h3 class="dienst-kaart__naam">Renovatie &amp; herstel</h3>
+      <p class="dienst-kaart__beschrijving">
+        Beschadigde of oude muren opnieuw laten stucen? Wij brengen uw muren en plafonds terug in perfecte staat, klaar voor verf, behang of sierpleister.
+      </p>
+      <span class="dienst-kaart__prijs">Vraag vrijblijvend een offerte aan →</span>
+    </div>
+
+    <div class="dienst-kaart">
+      <div class="dienst-kaart__icoon">🎨</div>
+      <h3 class="dienst-kaart__naam">Sierpleister &amp; croco stuc</h3>
+      <p class="dienst-kaart__beschrijving">
+        Wilt u uw interieur een bijzondere uitstraling geven? Met sierpleister of croco stuc creëren wij unieke structuureffecten voor een persoonlijk eindresultaat.
+      </p>
+      <span class="dienst-kaart__prijs">Vraag vrijblijvend een offerte aan →</span>
+    </div>
+
+    <div class="dienst-kaart">
+      <div class="dienst-kaart__icoon">🖌️</div>
+      <h3 class="dienst-kaart__naam">Sausklaar stucen</h3>
+      <p class="dienst-kaart__beschrijving">
+        Muren die klaar zijn om geverfd te worden — strak, egaal en zonder zichtbare naden. Ideaal na renovatie of bij het opfrissen van uw woning.
+      </p>
+      <span class="dienst-kaart__prijs">Vraag vrijblijvend een offerte aan →</span>
+    </div>
+
+    <div class="dienst-kaart">
+      <div class="dienst-kaart__icoon">🧱</div>
+      <h3 class="dienst-kaart__naam">Behangklaar stucen</h3>
+      <p class="dienst-kaart__beschrijving">
+        Een behangklare muurafwerking die speciaal is voorbereid voor het plakken van behang of het aanbrengen van sierpleister als extra laag.
+      </p>
+      <span class="dienst-kaart__prijs">Vraag vrijblijvend een offerte aan →</span>
+    </div>
+
+    <div class="dienst-kaart">
+      <div class="dienst-kaart__icoon">💨</div>
+      <h3 class="dienst-kaart__naam">Latex spuitwerk</h3>
+      <p class="dienst-kaart__beschrijving">
+        Snelle en uniforme afwerking van grote oppervlakken via latex spuittechniek. Tijdbesparend, egaal resultaat voor zowel wanden als plafonds.
+      </p>
+      <span class="dienst-kaart__prijs">Vraag vrijblijvend een offerte aan →</span>
+    </div>
+
+  </div>
+</section>
+
+<!-- =============================================
+     REVIEWS
+     ============================================= -->
+<section class="reviews" id="reviews">
+  <div class="reviews__header">
+    <span class="sectie-label">Klantbeoordelingen</span>
+    <h2 class="sectie-kop">Wat zeggen onze<br><em>klanten?</em></h2>
+  </div>
+  <div class="reviews__grid">
+
+    <div class="review-kaart">
+      <div class="review-kaart__sterren">★★★★★</div>
+      <p class="review-kaart__tekst">
+        "Ismet heeft onze woonkamer prachtig gestuct. Heel netjes werk, goede communicatie vooraf en nette opruiming achteraf. Zeker een aanrader!"
+      </p>
+      <span class="review-kaart__naam">Sandra V. — Nijmegen</span>
+    </div>
+
+    <div class="review-kaart">
+      <div class="review-kaart__sterren">★★★★★</div>
+      <p class="review-kaart__tekst">
+        "Professioneel, eerlijk geprijsd en het resultaat is perfect. Alle muren zijn strak en klaar voor verf. We zijn erg blij met het eindresultaat."
+      </p>
+      <span class="review-kaart__naam">Martijn K. — Nijmegen</span>
+    </div>
+
+    <div class="review-kaart">
+      <div class="review-kaart__sterren">★★★★★</div>
+      <p class="review-kaart__tekst">
+        "Goede vakmanhanden, duidelijke afspraken en hij staat altijd bereikbaar. Fijn dat je direct met de stukadoor werkt, dat scheelt enorm."
+      </p>
+      <span class="review-kaart__naam">Fatima A. — Wijchen</span>
+    </div>
+
+  </div>
+  <p style="text-align:center; margin-top: 24px; font-size: 12px; color: var(--kleur-aarde); font-style: italic;">
+    [ Reviews zijn representatieve voorbeelden — echte Google Reviews in te voegen ]
+  </p>
+</section>
+
+<!-- =============================================
+     GALERIJ
+     ============================================= -->
+<section class="galerij" id="galerij">
+  <div class="galerij__header">
+    <span class="sectie-label">Galerij</span>
+    <h2 class="sectie-kop">Ons <em>werk</em> in beeld</h2>
+  </div>
+  <div class="galerij__grid">
+    <div class="galerij__item">
+      <p class="galerij__item-tekst">[ Uitgelichte foto — groot ]</p>
+    </div>
+    <div class="galerij__item">
+      <p class="galerij__item-tekst">[ Foto 2 ]</p>
+    </div>
+    <div class="galerij__item">
+      <p class="galerij__item-tekst">[ Foto 3 ]</p>
+    </div>
+    <div class="galerij__item">
+      <p class="galerij__item-tekst">[ Foto 4 ]</p>
+    </div>
+    <div class="galerij__item">
+      <p class="galerij__item-tekst">[ Foto 5 ]</p>
+    </div>
+    <div class="galerij__item">
+      <p class="galerij__item-tekst">[ Foto 6 ]</p>
+    </div>
+  </div>
+</section>
+
+<!-- =============================================
+     WERKWIJZE
+     ============================================= -->
+<section class="werkwijze">
+  <div class="werkwijze__header">
+    <span class="sectie-label">Hoe werken wij?</span>
+    <h2 class="sectie-kop" style="color:var(--kleur-wit)">Van aanvraag tot <em style="color:var(--kleur-leem)">oplevering</em></h2>
+  </div>
+  <div class="werkwijze__stappen">
+    <div class="werkwijze__stap">
+      <div class="stap__nummer">01</div>
+      <div class="stap__naam">Contact &amp; intake</div>
+      <p class="stap__tekst">U neemt contact op via telefoon, WhatsApp of het formulier. Wij reageren snel en plannen een afspraak.</p>
+    </div>
+    <div class="werkwijze__stap">
+      <div class="stap__nummer">02</div>
+      <div class="stap__naam">Inmeten &amp; offerte</div>
+      <p class="stap__tekst">Ismet komt vrijblijvend de situatie bekijken en brengt een heldere, eerlijke offerte uit zonder verborgen kosten.</p>
+    </div>
+    <div class="werkwijze__stap">
+      <div class="stap__nummer">03</div>
+      <div class="stap__naam">Uitvoering</div>
+      <p class="stap__tekst">Vakkundig en netjes uitgevoerd stucwerk, altijd door Ismet persoonlijk. U weet dus altijd wie er bij u werkt.</p>
+    </div>
+    <div class="werkwijze__stap">
+      <div class="stap__nummer">04</div>
+      <div class="stap__naam">Oplevering</div>
+      <p class="stap__tekst">Schone oplevering, nette werkplek. Klaar voor verf, behang of sierpleister — precies zoals afgesproken.</p>
+    </div>
+  </div>
+</section>
+
+<!-- =============================================
+     CONTACT
+     ============================================= -->
+<section class="contact" id="contact">
+  <div class="contact__inner">
+    <div>
+      <span class="sectie-label">Contact</span>
+      <h2 class="sectie-kop">Neem gerust<br><em>contact op</em></h2>
+      <p style="font-size:15px; color:var(--kleur-tekst-licht); margin-bottom:32px; line-height:1.75;">
+        Heeft u een vraag of wilt u direct een vrijblijvende offerte? Bel of app ons, of vul het formulier in. Wij reageren zo snel mogelijk.
+      </p>
+
+      <div class="contact__info-item">
+        <div class="contact__info-icoon">📍</div>
+        <div>
+          <div class="contact__info-label">Adres</div>
+          <div class="contact__info-waarde">De Gildekamp 1016<br>6545 KB Nijmegen</div>
+        </div>
+      </div>
+
+      <div class="contact__info-item">
+        <div class="contact__info-icoon">📞</div>
+        <div>
+          <div class="contact__info-label">Telefoon / WhatsApp</div>
+          <div class="contact__info-waarde"><a href="tel:0641165070">06 411 650 70</a></div>
+        </div>
+      </div>
+
+      <div class="contact__info-item">
+        <div class="contact__info-icoon">✉️</div>
+        <div>
+          <div class="contact__info-label">E-mail</div>
+          <div class="contact__info-waarde"><a href="mailto:dndafbouw@gmail.com">dndafbouw@gmail.com</a></div>
+        </div>
+      </div>
+
+      <div class="contact__openingstijden">
+        <div class="contact__ot-titel">Bereikbaarheid</div>
+        <div class="contact__ot-rij">
+          <span>Maandag t/m vrijdag</span>
+          <span>08:00 – 18:00</span>
+        </div>
+        <div class="contact__ot-rij">
+          <span>Zaterdag</span>
+          <span>Op afspraak</span>
+        </div>
+        <div class="contact__ot-rij">
+          <span>Zondag</span>
+          <span>Gesloten</span>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <h3 style="font-family:var(--font-display); font-size:22px; font-weight:500; color:var(--kleur-donker); margin-bottom:24px;">
+        Offerte aanvragen
+      </h3>
+      <form class="formulier" onsubmit="return false;">
+        <div class="formulier__rij">
+          <div class="formulier__veldje">
+            <label for="naam">Naam</label>
+            <input type="text" id="naam" name="naam" placeholder="Uw naam">
+          </div>
+          <div class="formulier__veldje">
+            <label for="telefoon">Telefoon</label>
+            <input type="tel" id="telefoon" name="telefoon" placeholder="06 — — — —">
+          </div>
+        </div>
+        <div class="formulier__veldje">
+          <label for="email">E-mailadres</label>
+          <input type="email" id="email" name="email" placeholder="uw@email.nl">
+        </div>
+        <div class="formulier__veldje">
+          <label for="dienst">Gewenste dienst</label>
+          <select id="dienst" name="dienst">
+            <option value="">— Selecteer een dienst —</option>
+            <option>Nieuwbouw stucwerk</option>
+            <option>Renovatie &amp; herstel</option>
+            <option>Sierpleister / Croco stuc</option>
+            <option>Sausklaar stucen</option>
+            <option>Behangklaar stucen</option>
+            <option>Latex spuitwerk</option>
+            <option>Anders / weet ik nog niet</option>
+          </select>
+        </div>
+        <div class="formulier__veldje">
+          <label for="bericht">Omschrijving klus</label>
+          <textarea id="bericht" name="bericht" placeholder="Beschrijf kort uw klus (ruimte, afmetingen, situatie)…"></textarea>
+        </div>
+        <button type="submit" class="btn-primair" style="width:100%; padding:15px;">
+          Stuur aanvraag →
+        </button>
+        <p style="font-size:12px; color:var(--kleur-tekst-licht); text-align:center; margin-top:4px;">
+          Vrijblijvend — wij reageren binnen 24 uur
+        </p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- =============================================
+     FOOTER
+     ============================================= -->
+<footer class="footer">
+  <div class="footer__inner">
+    <div>
+      <div class="footer__logo-naam">D.N.D. Afbouw</div>
+      <div class="footer__logo-sub">Stukadoors- &amp; Afbouwbedrijf · Nijmegen</div>
+      <p class="footer__beschrijving">
+        Vakkundig stucwerk voor nieuwbouw en renovatie in Nijmegen en omstreken. Altijd direct contact met de vakman.
+      </p>
+    </div>
+    <div>
+      <div class="footer__kolom-titel">Diensten</div>
+      <ul class="footer__kolom-links">
+        <li><a href="#diensten">Nieuwbouw stucwerk</a></li>
+        <li><a href="#diensten">Renovatie</a></li>
+        <li><a href="#diensten">Sierpleister</a></li>
+        <li><a href="#diensten">Sausklaar stucen</a></li>
+        <li><a href="#diensten">Latex spuitwerk</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer__kolom-titel">Bedrijfsinfo</div>
+      <ul class="footer__kolom-links">
+        <li><a href="#over-ons">Over ons</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><a href="https://www.facebook.com/dndstukadoors/" target="_blank">Facebook</a></li>
+        <li><a href="#contact">Offerte aanvragen</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer__bottom">
+    <span class="footer__copyright">© 2025 D.N.D. Stukadoors &amp; Afbouwbedrijf — Nijmegen</span>
+    <span class="footer__kvk">KvK: 80168515 · BTW: NL003399446B23</span>
+  </div>
+</footer>
+
+<!-- =============================================
+     JAVASCRIPT — Hamburger menu only
+     ============================================= -->
+<script>
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+
+  hamburger.addEventListener('click', function() {
+    mobileMenu.classList.toggle('open');
+  });
+
+  function sluitMenu() {
+    mobileMenu.classList.remove('open');
+  }
+</script>
+
+</body>
+</html>
